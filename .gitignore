@@ -1,0 +1,17 @@
+# Dart
+.dart_tool/
+.packages
+build/
+doc/api/
+
+# Library packages should commit pubspec.lock per Dart guidance? For
+# applications yes, for libraries no. jpzip is a library.
+pubspec.lock
+
+# Editor
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
