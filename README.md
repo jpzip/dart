@@ -29,7 +29,7 @@ flutter pub get
 import 'package:jpzip/jpzip.dart';
 
 void main() async {
-  final entry = await lookup('2310831');
+  final entry = await lookup('2310017');
   // entry == null なら見つからなかった
   print(entry?.prefecture); // 神奈川県
   print(entry?.city);       // 横浜市中区
@@ -55,7 +55,7 @@ final client = JpzipClient(
 );
 
 await client.preload('all');
-final entry = await client.lookup('2310831');
+final entry = await client.lookup('2310017');
 client.close(); // 内部 http.Client を閉じる
 ```
 

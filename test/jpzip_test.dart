@@ -42,10 +42,10 @@ Map<String, dynamic> _meta(String version, {String spec = '1.0'}) => {
 void main() {
   group('isValidZipcode', () {
     test('validates 7-digit strings', () {
-      expect(isValidZipcode('2310831'), isTrue);
+      expect(isValidZipcode('2310017'), isTrue);
       expect(isValidZipcode('231083'), isFalse);
-      expect(isValidZipcode('23108310'), isFalse);
-      expect(isValidZipcode('231-0831'), isFalse);
+      expect(isValidZipcode('23100170'), isFalse);
+      expect(isValidZipcode('231-0017'), isFalse);
       expect(isValidZipcode('abcdefg'), isFalse);
     });
   });
@@ -68,11 +68,11 @@ void main() {
       final mock = MockClient((req) async {
         expect(req.url.path, '/p/231.json');
         final body = {
-          '2310831': _entry(
+          '2310017': _entry(
             prefecture: '神奈川県',
             city: '横浜市中区',
             towns: [
-              {'town': '矢口台', 'kana': 'ヤグチダイ', 'roma': 'Yaguchidai'}
+              {'town': '本町', 'kana': 'ホンチョウ', 'roma': 'Honcho'}
             ],
           ),
         };
@@ -80,11 +80,11 @@ void main() {
       });
       final client =
           JpzipClient(httpClient: mock, baseURL: 'https://example.test');
-      final e = await client.lookup('2310831');
+      final e = await client.lookup('2310017');
       expect(e, isNotNull);
       expect(e!.prefecture, '神奈川県');
       expect(e.city, '横浜市中区');
-      expect(e.towns.single.town, '矢口台');
+      expect(e.towns.single.town, '本町');
       client.close();
     });
 
@@ -101,11 +101,11 @@ void main() {
       final mock = MockClient((req) async {
         hits++;
         final body = {
-          '2310831': _entry(
+          '2310017': _entry(
             prefecture: '神奈川県',
             city: '横浜市中区',
             towns: [
-              {'town': '矢口台', 'kana': 'ヤグチダイ', 'roma': 'Yaguchidai'}
+              {'town': '本町', 'kana': 'ホンチョウ', 'roma': 'Honcho'}
             ],
           ),
         };
@@ -113,8 +113,8 @@ void main() {
       });
       final client =
           JpzipClient(httpClient: mock, baseURL: 'https://example.test');
-      await client.lookup('2310831');
-      await client.lookup('2310831');
+      await client.lookup('2310017');
+      await client.lookup('2310017');
       expect(hits, 1);
       client.close();
     });
@@ -271,11 +271,11 @@ void main() {
             }
             prefixHits++;
             return _jsonResponse({
-              '2310831': _entry(
+              '2310017': _entry(
                 prefecture: '神奈川県',
                 city: '横浜市中区',
                 towns: [
-                  {'town': '矢口台', 'kana': 'ヤグチダイ', 'roma': 'Yaguchidai'}
+                  {'town': '本町', 'kana': 'ホンチョウ', 'roma': 'Honcho'}
                 ],
               ),
             });
@@ -287,7 +287,7 @@ void main() {
         cache: l2,
       );
       await c1.getMeta();
-      await c1.lookup('2310831');
+      await c1.lookup('2310017');
       expect(prefixHits, 1);
       // L2 has the entry now.
       expect(l2.size, 1);
