@@ -256,6 +256,19 @@ void main() {
       client.close();
     });
 
+    test('no retry on 4xx (non-404) — regression', () async {
+      var attempts = 0;
+      final mock = MockClient((_) async {
+        attempts++;
+        return http.Response('forbidden', 403);
+      });
+      final client =
+          JpzipClient(httpClient: mock, baseURL: 'https://example.test');
+      await expectLater(client.lookup('2310017'), throwsA(isA<Exception>()));
+      expect(attempts, 1);
+      client.close();
+    });
+
     test('data-version change invalidates L1 cache via L2 sharing', () async {
       // Use two clients sharing one Cache (L2). The version bump on the
       // second client's getMeta() should clear the shared L2, which the
