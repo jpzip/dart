@@ -2,6 +2,7 @@
 
 [![pub.dev](https://img.shields.io/pub/v/jpzip.svg)](https://pub.dev/packages/jpzip)
 [![pub points](https://img.shields.io/pub/points/jpzip)](https://pub.dev/packages/jpzip/score)
+[![Docs](https://img.shields.io/badge/docs-jpzip.nadai.dev-0066cc.svg)](https://jpzip.nadai.dev)
 [![Dart SDK](https://img.shields.io/badge/Dart%20SDK-%5E3.0.0-0175C2.svg)](https://dart.dev)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Publish](https://github.com/jpzip/dart/actions/workflows/publish.yml/badge.svg)](https://github.com/jpzip/dart/actions/workflows/publish.yml)

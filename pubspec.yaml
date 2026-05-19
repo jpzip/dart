@@ -1,7 +1,9 @@
 name: jpzip
 description: Dart SDK for the jpzip postal-code dataset (https://jpzip.nadai.dev).
 version: 0.1.2
+homepage: https://jpzip.nadai.dev
 repository: https://github.com/jpzip/dart
+documentation: https://jpzip.nadai.dev
 
 environment:
   sdk: ^3.0.0
